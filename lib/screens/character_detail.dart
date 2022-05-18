@@ -109,7 +109,7 @@ class _OrigenCharacterState extends State<OrigenCharacter> {
 
         }else if(snapshot.hasError){
 
-          return ErrorMessageOrigin(error: snapshot.error);
+          return const ErrorMessageOrigin();
         }
         return const Padding(
           padding: EdgeInsets.all(20.0),
@@ -122,19 +122,22 @@ class _OrigenCharacterState extends State<OrigenCharacter> {
 
 class ErrorMessageOrigin extends StatelessWidget {
 
-  final Object? error;
-
   const ErrorMessageOrigin({
     Key? key,
-    required this.error
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: Text(error.toString(), style: const TextStyle(
-      fontSize: 18, fontWeight: FontWeight.bold),),
+      padding: const EdgeInsets.all(18.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          Text('Ups, algo salio mal',
+          style: TextStyle(fontSize: 22, color: Colors.redAccent, fontWeight: FontWeight.bold),),
+          Text('Error al obtener el origen del personaje', style: TextStyle(fontSize: 16))
+        ],
+      ),
     );
   }
 }
