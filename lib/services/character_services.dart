@@ -59,4 +59,22 @@ class CharactersProvider extends ChangeNotifier {
 
   }
 
+
+  Future<List<Character>> getChatacterByQuery(String name) async{
+
+    var url = Uri.https(baseUrl, 'api/character', {
+        'name': name
+        }
+    );
+
+    var response = await http.get(url);
+
+    if(response.statusCode == 200){
+      return CharactersResponse.fromJson(response.body).results;
+    }
+
+    throw Exception('Fail to load characters');
+
+  }
+
 }

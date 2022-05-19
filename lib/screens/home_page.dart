@@ -1,4 +1,5 @@
 import 'package:aplicacion_rick_morty_rest/screens/characters_page.dart';
+import 'package:aplicacion_rick_morty_rest/search/search_delegate.dart';
 import 'package:aplicacion_rick_morty_rest/services/character_services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +19,11 @@ class HomePageCharacters extends StatelessWidget {
         title: const Text('Rick & Morty'),
         centerTitle: true,
         elevation: 0,
+        actions: [
+          IconButton(onPressed: (){
+            showSearch(context: context, delegate: CharactersSearchDelegate());
+          }, icon: const Icon(Icons.search_outlined))
+        ],
       ),
       body:  charactersProvider.myCharacters.isEmpty
         ? const Center(child: CircularProgressIndicator()) : CharactersContain(charactersProvider: charactersProvider),
