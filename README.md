@@ -1,4 +1,6 @@
-# aplicacion_rick_morty_rest
+**RICK Y MORY APP**
+
+![](https://i.imgur.com/u17iJ71.png)
 
 A new Flutter project.
 
